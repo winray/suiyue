@@ -1,0 +1,58 @@
+.change-form {
+	padding-top: 10px;
+}
+.change-form p{
+	font-size: 18px;
+	padding-top: 10px;
+	padding-bottom: 2px;
+}
+
+.change-form input[type="file"] {
+
+}
+
+#email {
+	width: 170px;
+	padding: 4px;
+	font-size: 16px;
+	border-radius: 3px;
+	border: 1px solid rgb(157, 148, 148);
+}
+
+.change-form input[type="text"],input[type="password"]{
+	width: 170px;
+	padding: 4px;
+	font-size: 16px;
+	border-radius: 5px;
+	border: 1px solid rgb(157, 148, 148);
+}
+
+#text {
+	padding: 7px;
+	font-size: 15px;
+	width: 400px;
+	height: 80px;
+	border-radius: 5px;
+}
+
+.change-form label {
+	padding-left: 10px;
+}
+
+#submit-button {
+	margin-top: 5px;
+	margin-bottom: 25px;
+	display: block;
+	padding: 5px;
+	height: 32px;
+	color: #FFF;
+	width: 80px;
+	background-color: #4F4F4F;
+	border: none;
+	border-radius: 40px;
+	cursor: pointer;
+}
+
+#submit-button:hover{
+	background-color: #188D62;
+}

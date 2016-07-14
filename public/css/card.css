@@ -1,0 +1,51 @@
+
+.card {
+	height: 200px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.card img {
+	height: 100%;
+	width: 100%;
+	opacity: 0.8;
+}
+
+.card span {
+	position: relative;
+	bottom: 190px;
+	left: 10px;
+	font-style: italic;
+	color:rgba(79, 10, 107, 0.93);
+}
+
+.card p {
+	position: relative;
+	text-align: center;
+	bottom: 155px;
+	font-size: 45px;
+	font-weight: lighter;
+	color: rgba(48, 14, 118, 0.79);
+}
+
+
+.card-container {
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+
+.card-container h1 {
+	font-size: 15px;
+	font-weight: lighter;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	color: rgba(22, 43, 60, 0.85);
+}
+
+.card-container a {
+	color: rgba(22, 43, 60, 0.85);
+}
+
+.card-container a:hover {
+	color: rgba(5, 74, 129, 1);
+}

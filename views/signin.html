@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+	<title>注册|岁阅</title>
+    <link rel="stylesheet" href="{{ static_url("css/in.css") }}">
+    <link rel="icon" href="{{ static_url("pic/static/logo.png") }}">
+</head>
+<body>
+	<div id="header" class="container">
+        <a href="/" class="logo">
+            <img src="{{ static_url("pic/static/logo.png") }}" alt="suiyue">
+        </a>
+    </div>
+    <div id="main" class="container">
+      <div>
+        <h1>注册岁阅</h1>
+         <form action="/signin" method="post">
+            
+            <div class="form-group">
+                <label for="name" class="required">用户名: </label>
+                <input type="text" class="form-control" name="name" id="name" placeholder="字母、数字等，用户名唯一">
+            </div>
+
+            <div class="form-group">
+                <label for="name" class="required">邮箱: </label>
+                <input type="text" class="form-control" name="email" id="email" placeholder="请输入您的邮箱">
+            </div>
+
+            <div class="form-group">
+                <label for="password">密码: </label>
+                <input type="password" id="password" name="password" placeholder="请输入您的密码">
+            </div>
+
+            <div class="form-group">
+                <label for="password">确认密码: </label>
+                <input type="password" id="password" name="npassword" placeholder="再一次输入密码">
+            </div>
+
+            <div>
+                <button type="submit" id="submit">注册</button>
+            </div>
+
+        </form>
+      </div>
+    </div>
+    <div id="footer" class="container">
+        <a href="/login" class="footer-link">登录</a>
+        <a href="/" class="footer-link">首页</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>登录|岁阅</title>
+    <link rel="stylesheet" href="{{ static_url("css/in.css")}}">
+    <link rel="icon" href="{{ static_url("pic/static/logo.png") }}">
+</head>
+<body>
+	<div id="header" class="container">
+            <a href="/" class="logo">
+                <img src="{{static_url("pic/static/logo.png")}}" alt="suiyue">
+            </a>
+    </div>
+
+    <div id="main" class="container">
+      <div>
+        <h1>登录</h1>
+         <form action="/login" method="post">
+
+            <div class="form-group">
+                <label for="name" class="required">邮箱: </label>
+                <input type="text" class="form-control" name="email" id="name" placeholder="请输入您的邮箱">
+            </div>
+            <div>
+                <label for="password">密码: </label>
+                <input type="password" id="password" name="password" placeholder="请输入您的密码">
+            </div>
+            <div>
+                <button type="submit" id="submit">登录</button>
+            </div>
+        </form>
+      </div>
+    </div>
+    <div id="footer" class="container">
+            <a href="/signin" class="footer-link">注册</a>
+        <a href="/" class="footer-link">首页</a>
+    </div>
+</body>
+</html>

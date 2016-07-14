@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{{ Vuser[0].uname }}|岁阅</title>
+	<link rel="stylesheet" href="{{static_url("css/base.css")}}">
+	<link rel="stylesheet" href="{{static_url("css/index.css")}}">
+	<link rel="stylesheet" href="{{static_url("css/read.css")}}">
+	<link rel="icon" href="{{ static_url("pic/static/logo.png") }}">
+</head>
+<body>
+	<div class="container">
+		<div class="header-container">
+		<div class="header">
+			<div class="header-title">
+				<a href="/">岁阅</a>
+				<span>
+					A land of literary talent
+				</span>
+			</div>
+			<div class="header-category">
+				<ul>
+					<li>
+						<a href="/card">词卡</a>
+					</li>
+					<li>
+						<a href="/story">故事</a>
+					</li>
+					<li>
+						<a href="/free">自由</a>
+					</li>
+					<li>
+						<a href="/read">阅读</a>
+					</li>
+				</ul>
+			</div>
+
+			 
+			{% if len(user)>0 %}
+			<div class="header-user">
+				<a href="/logout" id="user">
+					退出
+				</a>
+				<a href="{{"/user?uid="+str(user[0].uid)}}">
+					<img src="{{ static_url("pic/hpic/"+user[0].hpic) }}" alt="{{user[0].uname}}">
+				</a>
+			</div>
+			{% end if%}
+
+			{% if len(user)==0 %}
+			<div class="header-choise">
+				<a href="/login">
+					登录   
+				</a>
+				<a href="/signin">
+					注册
+				</a>
+			</div>
+			{% end if %}
+		</div>
+		</div>
+
+		<div class="main-container">
+		<div class="main">
+			<div class="main-left-container">
+			<div class="main-left">
+
+				<div class="suiyue-circle">
+					
+					<div class="column">
+						{% if U %}
+						<p>我的词卡 - {{ len(Acard) }}</p>
+						{% end if %}
+						{% if not U %}
+						<p>Ta的词卡 - {{ len(Acard) }}</p>
+						{% end if %}
+						<a href="/card">创作词卡></a>
+					</div>
+					
+
+					{% if len(Acard)>0 %}
+					{% for one in Acard %}
+					<div class="simplified-arcitle">
+						<div class="simplified-article-title">
+							<a href="{{ "/article?aid="+str(one.aid) }}">
+								<p>{{ one.title }}</p>
+							</a>
+							<a href="{{ "/user?uid="+str(one.uid) }}" class="simplified-article-author">
+								<span class="simplified-article-author-name">{{ one.uname }}</span>
+								<img src="{{ static_url("pic/hpic/"+one.hpic) }}" alt="{{ one.uname }}">
+							</a>
+						</div>
+
+						<div class="simplified-article-main">
+							<a href="{{ "/article?aid="+str(one.aid) }}">
+								<p>{% raw one.main %}</p>
+							</a>
+						</div>
+						
+
+						<div class="simplified-article-footer">
+							<p>{{ one.wtime }} 来自 
+								<a href="{{ "/card?cid="+str(one.cid) }}" class="simplified-article-footer-from">词卡</a>
+							</p>
+							<ul>
+								<li>
+									<a href="{{ "/article?aid="+str(one.aid) }}" class="simplified-article-footer-from">
+										喜欢-{{ one.nlove }}
+									</a>
+								</li>
+								<li>
+									<a href="{{ "/article?aid="+str(one.aid) }}" class="simplified-article-footer-from">
+										评论-{{ one.ncomment }}
+									</a>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+					{% end for %}
+					{% end if %}
+
+					<div class="column">
+						{% if U %}
+						<p>我的故事 - {{ len(Astory) }}</p>
+						{% end if %}
+						{% if not U %}
+						<p>Ta的故事 - {{ len(Astory) }}</p>
+						{% end if %}
+						<a href="/story">创作故事></a>
+					</div>
+					
+
+					{% if len(Astory)>0 %}
+					{% for one in Astory %}
+					<div class="simplified-arcitle">
+						<div class="simplified-article-title">
+							<a href="{{ "/article?aid="+str(one.aid) }}">
+								<p>{{ one.title }}</p>
+							</a>
+							<a href="{{ "/user?uid="+str(one.uid) }}" class="simplified-article-author">
+								<span class="simplified-article-author-name">{{ one.uname }}</span>
+								<img src="{{ static_url("pic/hpic/"+one.hpic) }}" alt="{{ one.uname }}">
+							</a>
+						</div>
+
+						<div class="simplified-article-main">
+							<a href="{{ "/article?aid="+str(one.aid) }}">
+								<p>{% raw one.main %}</p>
+							</a>
+						</div>
+						
+
+						<div class="simplified-article-footer">
+							<p>{{ one.wtime }} 来自 
+								<a href="{{ "/story?sid="+str(one.sid) }}" class="simplified-article-footer-from">故事</a>
+							</p>
+							<ul>
+								<li>
+									<a href="{{ "/article?aid="+str(one.aid) }}" class="simplified-article-footer-from">
+										喜欢-{{ one.nlove }}
+									</a>
+								</li>
+								<li>
+									<a href="{{ "/article?aid="+str(one.aid) }}" class="simplified-article-footer-from">
+										评论-{{ one.ncomment }}
+									</a>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+					{% end for %}
+					{% end if %}
+
+
+					<div class="column">
+						{% if U %}
+						<p>我的自由 - {{ len(Afree) }}</p>
+						{% end if %}
+						{% if not U %}
+						<p>Ta的自由 - {{ len(Afree) }}</p>
+						{% end if %}
+						<a href="/free">创作自由></a>
+					</div>
+					
+
+					{% if len(Afree)>0 %}
+					{% for one in Afree %}
+					<div class="simplified-arcitle">
+						<div class="simplified-article-title">
+							<a href="{{ "/article?aid="+str(one.aid) }}">
+								<p>{{ one.title }}</p>
+							</a>
+							<a href="{{ "/user?uid="+str(one.uid) }}" class="simplified-article-author">
+								<span class="simplified-article-author-name">{{ one.uname }}</span>
+								<img src="{{ static_url("pic/hpic/"+one.hpic) }}" alt="{{ one.uname }}">
+							</a>
+						</div>
+
+						<div class="simplified-article-main">
+							<a href="{{ "/article?aid="+str(one.aid) }}">
+								<p>{% raw one.main %}</p>
+							</a>
+						</div>
+						
+
+						<div class="simplified-article-footer">
+							<p>{{ one.wtime }} 来自 
+								
+								<a href="/story" class="simplified-article-footer-from">自由写作</a>
+							</p>
+							<ul>
+								<li>
+									<a href="{{ "/article?aid="+str(one.aid) }}" class="simplified-article-footer-from">
+										喜欢-{{ one.nlove }}
+									</a>
+								</li>
+								<li>
+									<a href="{{ "/article?aid="+str(one.aid) }}" class="simplified-article-footer-from">
+										评论-{{ one.ncomment }}
+									</a>
+								</li>
+							</ul>
+						</div>
+
+					</div>
+					{% end for %}
+					{% end if %}
+
+
+
+				</div>
+			</div>
+			</div>
+
+			<div class="main-right-container">
+			<div class="main-right">
+				{% if len(Vuser)>0 %}
+				<div class="profile">
+				 	<a href="{{ "/user?uid="+str(Vuser[0].uid) }}">
+				 		<img src="{{ static_url("pic/hpic/"+Vuser[0].hpic) }}" alt="{{ Vuser[0].uname }}">
+				 		<h1>
+				 			{{ Vuser[0].uname }}
+				 		</h1>
+				 	</a>
+				 	<p>{{ Vuser[0].profile }}</p>
+				 	<div class="profile-about-num">
+				 		<a href="{{ "/fans?uid="+str(Vuser[0].uid)+"&fans=1" }}">
+				 			<strong>{{ Vuser[0].nfby }}</strong>
+				 			<span>粉丝</span>
+				 		</a>
+				 		<a href="{{ "/fans?uid="+str(Vuser[0].uid)+"&fans=0" }}">
+				 			<strong>{{ Vuser[0].nfon }}</strong>
+				 			<span>关注</span>
+				 		</a>
+				 		<a href="{{ '/user?uid='+str(Vuser[0].uid) }}">
+				 			<strong>{{ Vuser[0].nfree+Vuser[0].ncard+Vuser[0].nstory }}</strong>
+				 			<span>文章</span>
+				 		</a>
+				 	</div>
+				</div>
+				{% end if %}
+
+				{% if len(user)>0 and user[0].uid != Vuser[0].uid %}
+				<div class="focus-or-not">
+					<form action="/focus" method="post">
+						<input type="text" name="bfid" value="{{ Vuser[0].uid }}" class="hidden">
+						{% if not F %}
+						<input type="text" name="focus" value="focus" class="hidden">
+						<button class="focus-button" title="点击关注ta" type="submit">关注Ta</button>
+						{% end if %}
+						{% if F %}
+						<input type="text" name="focus" value="stop" class="hidden">
+						<button  class="focus-button" title="已点击关注ta，点击取消关注" type="submit">不关注Ta</button>
+						{% end if %}
+					</form>
+					
+				</div>
+				{% end if %}
+
+				{% if len(user)>0 and user[0].uid == Vuser[0].uid %}
+				<div class="profile-about-num">
+				 	<a href="/wcard" title="创作词卡">
+				 		<strong style="font-weight:lighter" class="icon">s</strong>
+				 		<span>词卡</span>
+				 	</a>
+				 	<a href="wstory" title="创作故事">
+				 		<strong class="icon" style="font-weight:lighter">U</strong>
+				 		<span>故事</span>
+				 	</a>
+				 	<a href="/change" title="个人设置">
+				 		<strong class="icon" style="font-weight:lighter">J</strong>
+				 		<span>设置</span>
+				 	</a>
+				 </div>
+				 {% end if %}
+
+				
+			</div>
+			</div>
+		</div>
+		</div>
+
+		<div class="footer-container">
+		<div class="footer">
+			<p>© Suiyue</p>
+			<p>2016</p>
+		</div>
+		</div>
+	</div>
+</body>
+</html>
