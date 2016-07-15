@@ -1,0 +1,39 @@
+.story-container {
+	overflow: hidden;
+	margin-bottom: 15px;
+	padding-bottom: 15px;
+	border-bottom: solid 1px #E7F2ED;
+}
+
+.story-container h1 {
+	font-size: 15px;
+	font-weight: lighter;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	color: rgba(22, 43, 60, 0.85);
+}
+
+.story-container a {
+	color: rgba(22, 43, 60, 0.85);
+}
+
+.story-container a:hover {
+	color: rgba(5, 74, 129, 1);
+}
+
+.story img {
+	float: left;
+	height: 200px;
+	width: 150px;
+	padding-right: 15px;
+	padding-bottom: 15px;
+}
+
+.story h1{
+	font-size: 15px;
+}
+
+.story {
+	line-height: 25px;
+	font-size: 15px;
+}

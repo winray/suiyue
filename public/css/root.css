@@ -1,0 +1,53 @@
+.container {
+	text-align: center;
+}
+
+.card-control, .story-control {
+	margin-right: auto;
+	margin-left: auto;
+	margin-bottom: 30px;
+	margin-top: 30px;
+	width: 1300px;
+}
+
+table {
+  border-collapse:collapse;
+  width: 100%;
+}
+
+caption {
+	padding: 10px;
+	font-size: 24px;
+}
+
+table, td, th {
+	border: 1px solid black;
+}
+
+th {
+	padding: 15px;
+}
+
+td {
+	padding: 10px;
+	min-width: 80px;
+}
+
+.order-setting {
+	width: 200px;
+}
+
+.pic-setting {
+	width: 350px;
+}
+
+.card-control tr td img{
+	width: 200px;
+	max-height: 100px;
+}
+
+.story-control tr td img {
+	width: 200px;
+	max-height: 150px;
+}
+

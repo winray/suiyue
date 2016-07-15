@@ -1,0 +1,167 @@
+.suiyue-reading-article {
+	overflow: hidden;
+}
+
+.suiyue-reading-title {
+	overflow: hidden;
+	margin-bottom: 5px;
+	height: 100px;
+}
+
+.suiyue-reading-title h1 {
+	font-size: 37px;
+	font-weight: lighter;
+	color:#4D4B4B;
+	padding-bottom: 15px;
+}
+
+.suiyue-reading-title li {
+	font-size: 13px;
+	color: rgba(77, 75, 75, 0.63);
+	float: left;
+	list-style: none;
+	padding-left: 15px;
+}
+
+.suiyue-reading-title a {
+	color:rgba(77, 75, 75, 0.63);
+	text-decoration: underline;
+}
+
+.suiyue-reading-title a:hover {
+	color:rgba(77, 75, 75, 1);
+}
+
+.suiyue-reading-main {
+	overflow: hidden;
+	color: #4D4B4B;
+	font-size: 19px;
+	line-height: 35px;
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+	border-bottom: solid 1px #E7F2ED;
+}
+
+.comment-container {
+	overflow: hidden;
+	margin-bottom: 60px;
+}
+
+.comments h1 {
+	margin-bottom: 10px;
+	font-size: 24px;
+	font-weight: lighter;
+}
+
+.comment-area p {
+	padding: 5px;
+	padding-left: 20px;
+}
+
+.comment-area textarea {
+	margin-left: 20px;
+	padding: 7px;
+	font-size: 15px;
+	line-height: 150%;
+	border-radius: 5px;
+}
+
+.comment-area button {
+	margin-left: 530px;
+	margin-bottom: 0px;
+	padding: 5px;
+	height: 32px;
+	color: #FFF;
+	width: 80px;
+	background-color: #4F4F4F;
+	border: none;
+	border-radius: 40px;
+	cursor: pointer;
+}
+
+.comment-area button:hover {
+	background-color: #188D62;
+}
+
+.touxiang {
+	float: left;
+	width: 80px;
+	height: 60px;
+	text-align: center;
+	font-size: 12px;
+	color: #FF703F;
+	font-weight: bold;
+}
+
+.touxiang img {
+	border-radius: 5px;
+	width: 40px;
+	height: 40px;
+}
+
+.neirong {
+	width: 550px;
+	float: left;
+	font-size: 16px;
+	line-height: 27px;
+}
+
+.neirong strong {
+	font-size: 15px;
+}
+
+.chaozuo {
+	padding-right: 30px;
+	float: right;
+	clear: both;
+	font-size: 12px;
+	color: #808080;
+}
+
+.chaozuo a {
+	color: #808080;
+}
+
+.chaozuo a:hover {
+	color: #177954;
+}
+
+.each-comment {
+	overflow: hidden;
+	padding-bottom: 15px;
+	padding-top: 20px;
+	margin-bottom: 10px;
+	border-top: 1px solid #eee;
+}
+
+.each-comment a{
+	color:rgba(24, 27, 29, 0.85);
+}
+
+.love {
+	cursor: pointer;
+	float: right;
+	font-size: 29px;
+	color: rgba(77, 75, 75, 0.63);
+	margin-top: -8px;
+	margin-right: 15px;
+}
+
+.focus-or-not {
+	text-align: center;
+}
+
+.focus-button {
+	margin: auto;
+	padding: 7px;
+	color: #FFF;
+	width: 70px;
+	background-color: rgba(77, 75, 75, 0.36);
+	border: none;
+	border-radius: 14px;
+	cursor: pointer;
+}
+
+.focus-button:hover {
+	background-color: #188D62;
+}
