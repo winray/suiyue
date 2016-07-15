@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>故事|岁阅|素材</title>
+	<link rel="icon" href="{{ static_url("pic/static/logo.png") }}">
+	<link rel="stylesheet" href="{{static_url("css/story.css")}}">
+	<link rel="stylesheet" href="{{static_url("css/card.css")}}">
+	<link rel="stylesheet" href="{{static_url("css/base.css")}}">
+	<link rel="stylesheet" href="{{ static_url("css/write.css") }}">
+</head>
+<body>
+	<div class="container">
+		<div class="header-container">
+		<div class="header">
+			<div class="header-title">
+				<a href="/">岁阅</a>
+				<span>
+					A land of literary talent
+				</span>
+			</div>
+			<div class="header-category">
+				<ul>
+					<li>
+						<a href="/card">词卡</a>
+					</li>
+					<li>
+						<a href="/story">故事</a>
+					</li>
+					<li>
+						<a href="/free">自由</a>
+					</li>
+					<li>
+						<a href="/read">阅读</a>
+					</li>
+				</ul>
+			</div>
+
+			 
+			{% if len(user)>0 %}
+			<div class="header-user">
+				<a href="/logout" id="user">
+					退出
+				</a>
+				<a href="{{"/user?uid="+str(user[0].uid)}}">
+					<img src="{{ static_url("pic/hpic/"+user[0].hpic) }}" alt="{{user[0].uname}}">
+				</a>
+			</div>
+			{% end if%}
+
+			{% if len(user)==0 %}
+			<div class="header-choise">
+				<a href="/login">
+					登录   
+				</a>
+				<a href="/signin">
+					注册
+				</a>
+			</div>
+			{% end if %}
+		</div>
+		</div>
+
+		<div class="main-container">
+		<div class="main">
+			<div class="write-button">
+				{% if msg=="" %}
+				<p>这里是故事续写素材投稿，描绘一个简单的故事，让大家把这个故事继续下去，你准备好了吗？</p>
+				{% end if %}
+
+				<p>{{ msg }}</p>
+
+			</div>
+
+			<form action="/wstory" method="post" class="Myform">
+				<p>标题</p>
+				<input type="text" id="title" name="title">
+				<p>内容</p>
+				<textarea name="content" style="width:660px;height:400px;padding:5px;font-size:15px"></textarea>
+				<button id="submit-button" type="submit">投稿</button>
+			</form>
+		</div>
+		</div>
+
+		<div class="footer-container">
+		<div class="footer">
+			<p>© Suiyue</p>
+			<p>2016</p>
+		</div>
+		</div>
+	</div>
+</body>
+</html>

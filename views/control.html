@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>后台管理|岁阅</title>
+	<link rel="stylesheet" href="{{static_url("css/root.css")}}">
+	<link rel="icon" href="{{ static_url("pic/static/logo.png") }}">
+</head>
+<body>
+	<div class="container">
+		<div class='card-control'>
+
+			<table>
+				<caption>词卡管理</caption>
+				<tr>
+					<th>序号</th>
+    				<th>词卡内容</th>
+    				<th>词卡图片</th>
+    				<th>图片设置</th>
+    				<th>词卡设置</th>
+  				</tr>
+  				{% if len(cards) > 0 %}
+  				{% for one in cards %}
+				<tr>
+					<td>
+					{% if one.porder == 0 %}
+					未发布
+					{% else %}
+					第{{ one.porder }}期
+					{% end if %}</td>
+  					<td>{{ one.main }}</td>
+  					<td class='pic-setting'><img src="{{ static_url('pic/card/'+one.pic) }}" alt="词卡图片"></td>
+  					<td><form action="/cardpic" enctype="multipart/form-data" method="post">
+  						<input type="hidden" name='cid' value='{{ one.cid }}'>
+  						<input type="file" name="image">
+						<button id="submit-button" type="submit">设置图片</button>
+					</form></td>
+  					<td class='order-setting'>
+  					{% if one.porder>6 or one.porder==0 %}
+  					<form action="/cardorder" method="post">
+  						<select name='porder'>
+  							<option value ="0">0</option>
+  							<option value ="{{ order+1 }}">{{ order+1 }}</option>
+  							<option value="{{ order+2 }}">{{ order+2 }}</option>
+  							<option value="{{ order+3 }}">{{ order+3 }}</option>
+  							<option value="{{ order+4 }}">{{ order+4 }}</option>
+  							<option value="{{ order+5 }}">{{ order+5 }}</option>
+  							<option value="{{ order+6 }}">{{ order+6 }}</option>
+						</select>
+						<input type="hidden" name='cid' value='{{ one.cid }}'>
+						<button id="submit-button" type="submit">设置序号</button>
+					</form>
+					{% else %}
+					往期不可更改
+					{% end if %}
+					</td>
+				</tr>
+				{% end for %}
+				{% end if %}
+			</table>
+		</div>
+
+		<div class='story-control'>
+			<table>
+				<caption>故事管理</caption>
+				<tr>
+					<th>序号</th>
+    				<th>故事标题</th>
+    				<th>故事内容</th>
+    				<th>故事图片</th>
+    				<th>图片设置</th>
+    				<th>故事设置</th>
+  				</tr>
+  				{% if len(stories)>0 %}
+  				{% for one in stories %}
+				<tr>
+					<td>{% if one.porder == 0 %}
+					未发布
+					{% else %}
+					第{{ one.porder }}期
+					{% end if %}</td>
+  					<td>{{ one.title }}</td>
+  					<td>{{ one.main }}</td>
+  					<td><img src="{{ static_url('pic/story/'+one.pic) }}" alt="故事配图"></td>
+  					<td class='pic-setting'><form action="/storypic" enctype="multipart/form-data" method="post">
+  						<input type="hidden" name='sid' value='{{ one.sid }}'>
+  						<input type="file" name="image">
+						<button id="submit-button" type="submit">设置图片</button>
+					</form></td>
+  					<td class='order-setting'>
+  					{% if one.porder>order or one.porder==0 %}
+  					<form action="/storyorder" method="post">
+  						<select name='porder'>
+  							<option value ="0">0</option>
+  							<option value ="{{ order+1 }}">{{ order+1 }}</option>
+  							<option value="{{ order+2 }}">{{ order+2 }}</option>
+  							<option value="{{ order+3 }}">{{ order+3 }}</option>
+  							<option value="{{ order+4 }}">{{ order+4 }}</option>
+  							<option value="{{ order+5 }}">{{ order+5 }}</option>
+  							<option value="{{ order+6 }}">{{ order+6 }}</option>
+						</select>
+						<input type="hidden" name='sid' value='{{ one.sid }}'>
+						<button id="submit-button" type="submit">设置序号</button>
+					</form>
+					{% else %}
+					往期不可更改
+					{% end if %}
+					</td>
+				</tr>
+				{% end for %}
+				{% end if %}
+			</table>
+		</div>
+	</div>
+</body>
+</html>

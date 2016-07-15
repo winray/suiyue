@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	{% if Class=="story" %}
+	<title>写作|岁阅|故事续写</title>
+	{% end if %}
+	{% if Class=="card" %}
+	<title>写作|岁阅|词卡写作</title>
+	{% end if %}
+	{% if Class=="free" %}
+	<title>写作|岁阅|自由写作</title>
+	{% end if %}
+	<link rel="icon" href="{{ static_url("pic/static/logo.png") }}">
+	<link rel="stylesheet" href="{{static_url("css/story.css")}}">
+	<link rel="stylesheet" href="{{static_url("css/card.css")}}">
+	<link rel="stylesheet" href="{{static_url("css/base.css")}}">
+	<link rel="stylesheet" href="{{ static_url("css/write.css") }}">
+	<link rel="stylesheet" href="{{static_url("editor/themes/default/default.css")}}">
+	<script charset="utf-8" src="{{static_url("editor/kindeditor-min.js")}}"></script>
+		<script charset="utf-8" src="{{static_url("editor/lang/zh_CN.js")}}"></script>
+		<script>
+			var editor;
+			KindEditor.ready(function(K) {
+				editor = K.create('textarea[name="content"]', {
+					resizeType : 1,
+					allowPreviewEmoticons : false,
+					allowImageUpload : false,
+					items : [
+						'bold', 'italic', 'underline',
+						'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+						'insertunorderedlist', 'emoticons','fullscreen'],
+					resizeType: 0
+				});
+			});
+		</script>
+</head>
+<body>
+	<div class="container">
+		<div class="header-container">
+		<div class="header">
+			<div class="header-title">
+				<a href="/">岁阅</a>
+				<span>
+					A land of literary talent
+				</span>
+			</div>
+			<div class="header-category">
+				<ul>
+					<li>
+						<a href="/card">词卡</a>
+					</li>
+					<li>
+						<a href="/story">故事</a>
+					</li>
+					<li>
+						<a href="/free">自由</a>
+					</li>
+					<li>
+						<a href="/read">阅读</a>
+					</li>
+				</ul>
+			</div>
+
+			 
+			{% if len(user)>0 %}
+			<div class="header-user">
+				<a href="/logout" id="user">
+					退出
+				</a>
+				<a href="{{"/user?uid="+str(user[0].uid)}}">
+					<img src="{{ static_url("pic/hpic/"+user[0].hpic) }}" alt="{{user[0].uname}}">
+				</a>
+			</div>
+			{% end if%}
+
+			{% if len(user)==0 %}
+			<div class="header-choise">
+				<a href="/login">
+					登录   
+				</a>
+				<a href="/signin">
+					注册
+				</a>
+			</div>
+			{% end if %}
+		</div>
+		</div>
+
+		<div class="main-container">
+		<div class="main">
+			{% if Class=="story" %}
+			<div class="story-container">
+				<h1>本期故事：<a href="{{ "/user?uid="+str(story[0].fid) }}">{{story[0].fname}}</a></h1>
+				<div class="story">
+					<img src="{{ static_url("pic/story/"+story[0].pic) }}" alt="pic">
+					<h1>{{ story[0].title }}</h1>
+					<div class="story-area">
+						{{ story[0].main }}
+					</div>
+				</div>
+			</div>
+			<div class="write-button">
+				<p>大脑开动吧，让这个故事继续下去...</p>
+			</div>
+			{% end if %}
+
+
+			{% if Class=="card" %}
+			<div class="card-container">
+				<h1>本期命题：<a href="{{ "/user?uid="+str(card[0].fid) }}">{{card[0].fname}}</a></h1>
+				<div class="card">
+					<img src="{{ static_url("pic/card/"+card[0].pic) }}" alt="">
+					<span>VoL.{{ card[0].porder }}</span>
+					<p id="c">{{ card[0].main }}</p>
+				</div>
+			</div>
+			<div class="write-button">
+				<p>请说出对上面词组的理解，或者用它讲个故事...</p>
+			</div>
+			{% end if %}
+
+			{% if Class=="free" %}
+			<div class="write-button">
+				<p>你呀你，是自在如风的少年，这里，你自在飞翔~</p>
+			</div>
+			{% end if %}
+
+			<form action="/write" method="post" class="Myform">
+				<input type="text" name="uid" value="{{ user[0].uid }}" class="hidden">
+				<input type="text" name="Class" id="" value="{{ Class }}" class="hidden">
+				{%if Class=="card"%}
+				<input type="text" name="kid" value="{{ card[0].cid }}" class="hidden">
+				{% end if %}
+				{%if Class=="story"%}
+				<input type="text" name="kid" value="{{ story[0].sid }}" class="hidden">
+				{% end if %}
+				<p>标题</p>
+				<input type="text" id="title" name="title">
+				<p>标签</p>
+				<input type="text" id="label" name="label">
+				<p>内容</p>
+				<textarea name="content" style="width:670px;height:400px;visibility:hidden;"></textarea>
+				<button id="submit-button" type="submit">发表</button>
+			</form>
+
+		</div>
+		</div>
+
+		<div class="footer-container">
+		<div class="footer">
+			<p>© Suiyue</p>
+			<p>2016</p>
+		</div>
+		</div>
+	</div>
+</body>
+</html>

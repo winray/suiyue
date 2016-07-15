@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>词卡|岁阅|素材</title>
+	<link rel="icon" href="{{ static_url("pic/static/logo.png") }}">
+	<link rel="stylesheet" href="{{static_url("css/story.css")}}">
+	<link rel="stylesheet" href="{{static_url("css/card.css")}}">
+	<link rel="stylesheet" href="{{static_url("css/base.css")}}">
+	<link rel="stylesheet" href="{{ static_url("css/write.css") }}">
+</head>
+<body>
+	<div class="container">
+		<div class="header-container">
+		<div class="header">
+			<div class="header-title">
+				<a href="/">岁阅</a>
+				<span>
+					A land of literary talent
+				</span>
+			</div>
+			<div class="header-category">
+				<ul>
+					<li>
+						<a href="/card">词卡</a>
+					</li>
+					<li>
+						<a href="/story">故事</a>
+					</li>
+					<li>
+						<a href="/free">自由</a>
+					</li>
+					<li>
+						<a href="/read">阅读</a>
+					</li>
+				</ul>
+			</div>
+
+			 
+			{% if len(user)>0 %}
+			<div class="header-user">
+				<a href="/logout" id="user">
+					退出
+				</a>
+				<a href="{{"/user?uid="+str(user[0].uid)}}">
+					<img src="{{ static_url("pic/hpic/"+user[0].hpic) }}" alt="{{user[0].uname}}">
+				</a>
+			</div>
+			{% end if%}
+
+			{% if len(user)==0 %}
+			<div class="header-choise">
+				<a href="/login">
+					登录   
+				</a>
+				<a href="/signin">
+					注册
+				</a>
+			</div>
+			{% end if %}
+		</div>
+		</div>
+
+		<div class="main-container">
+		<div class="main">
+			<div class="write-button">
+				{% if msg=="" %}
+				<p>在这里你可以发送我们你的词卡，一经采纳，你的词卡将发布在岁阅词卡上，期待你的创作喔~</p>
+				{% end if %}
+				<p>{{ msg }}</p>
+			</div>
+			<form action="/wcard" method="post" class="Myform">
+				<input type="text" name="uid" value="{{ user[0].uid }}" class="hidden">
+				<p>词卡</p>
+				<input type="text" id="title" name="main">
+				<button id="submit-button" type="submit">投稿</button>
+			</form>
+
+		</div>
+		</div>
+
+		<div class="footer-container">
+		<div class="footer">
+			<p>© Suiyue</p>
+			<p>2016</p>
+		</div>
+		</div>
+	</div>
+</body>
+</html>

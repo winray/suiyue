@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>设置|岁阅</title>
+	<link rel="stylesheet" href="{{static_url("css/base.css")}}">
+	<link rel="stylesheet" href="{{static_url("css/change.css")}}">
+</head>
+<body>
+	<div class="container">
+		<div class="header-container">
+		<div class="header">
+			<div class="header-title">
+				<a href="/">岁阅</a>
+				<span>
+					A land of literary talent
+				</span>
+			</div>
+			<div class="header-category">
+				<ul>
+					<li>
+						<a href="/card">词卡</a>
+					</li>
+					<li>
+						<a href="/story">故事</a>
+					</li>
+					<li>
+						<a href="/free">自由</a>
+					</li>
+					<li>
+						<a href="/read">阅读</a>
+					</li>
+				</ul>
+			</div>
+
+			 
+			{% if len(user)>0 %}
+			<div class="header-user">
+				<a href="/logout" id="user">
+					退出
+				</a>
+				<a href="{{"/user?uid="+str(user[0].uid)}}">
+					<img src="{{ static_url("pic/hpic/"+user[0].hpic) }}" alt="{{user[0].uname}}">
+				</a>
+			</div>
+			{% end if%}
+
+			{% if len(user)==0 %}
+			<div class="header-choise">
+				<a href="/login">
+					登录   
+				</a>
+				<a href="/signin">
+					注册
+				</a>
+			</div>
+			{% end if %}
+		</div>
+		</div>
+
+		<div class="main-container">
+		<div class="main">
+			<div class="main-left-container">
+			<div class="main-left">
+				<p>{{ error }}</p>
+				<form action="/change" enctype="multipart/form-data" method="post" class="change-form">
+					<p>头像</p>
+					<input type="file" name="image">
+					<p>登录邮箱</p>
+					<div id="email">{{ user[0].email }}</div>
+					<p>密码</p>
+					<input type="password" name="password" value="{{ user[0].password }}">
+					<p>确认密码</p>
+					<input type="password" name="rpassword" value="{{ user[0].password }}">
+					<p>昵称</p>
+					<input type="text" name="uname" value="{{ user[0].uname }}">
+					<p>性别</p>
+					<label>
+						<input type="radio" name="gender" value="M" >
+						男
+					</label>
+					<label>
+						<input type="radio" name="gender" value="F">
+						女
+					</label>
+					<label>
+						<input type="radio" name="gender" value="N" checked="checked">
+						保密
+					</label>
+					<p>签名档</p>
+					<textarea name="profile" cols="30" rows="7" id="text"></textarea>
+					<button id="submit-button" type="submit">更新设置</button>
+				</form>
+			</div>
+			</div>
+
+			<div class="main-right-container">
+			<div class="main-right">
+				{% if len(user)>0 %}
+				<div class="profile">
+				 	<a href="{{ "/user?uid="+str(user[0].uid) }}">
+				 		<img src="{{ static_url("pic/hpic/"+user[0].hpic) }}" alt="{{ user[0].uname }}">
+				 		<h1>
+				 			{{ user[0].uname }}
+				 		</h1>
+				 	</a>
+				 	<p>{{ user[0].profile }}</p>
+				 	<div class="profile-about-num">
+				 		<a href="{{ "/fans?uid="+str(user[0].uid)+"&fans=1" }}">
+				 			<strong>{{ user[0].nfby }}</strong>
+				 			<span>粉丝</span>
+				 		</a>
+				 		<a href="{{ "/fans?uid="+str(user[0].uid)+"&fans=0" }}">
+				 			<strong>{{ user[0].nfon }}</strong>
+				 			<span>关注</span>
+				 		</a>
+				 		<a href="{{ '/user?uid='+str(user[0].uid) }}">
+				 			<strong>{{ user[0].nfree+user[0].ncard+user[0].nstory }}</strong>
+				 			<span>文章</span>
+				 		</a>
+				 	</div>
+				</div>
+				{% end if %}
+			</div>
+			</div>
+		</div>
+		</div>
+
+		<div class="footer-container">
+		<div class="footer">
+			<p>© Suiyue</p>
+			<p>2016</p>
+		</div>
+		</div>
+	</div>
+</body>
+</html>
