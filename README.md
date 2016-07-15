@@ -56,4 +56,4 @@ A thought share website.
     ```
     
     **注意：若端口指定在1024以内需要加sudo超级用户权限**
-- 接下来可打开连接 http://localhost:8000/ 查看服务器是否启动，端口随你修改的端口改变
+- 接下来可打开连接 [http://localhost:8000/](http://localhost:8000/) 查看服务器是否启动，端口随你修改的端口改变
