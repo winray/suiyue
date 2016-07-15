@@ -1,0 +1,120 @@
+//用户属性
+create table user(
+  uid int(10) unsigned not null auto_increment,
+  primary key (uid),
+  email varchar(30),
+  index (email(30)),
+  uname varchar(30),
+  index (uname(30)),
+  password varchar(20),
+  sdate date,
+  profile varchar(150),
+  hpic varchar(50) default 'default.pic',
+  sex enum('M','F','N') default 'N',
+  nfon int(7) default 0,
+  nfby int(7) default 0,
+  nvisit int(7) default 0,
+  ncol int(7) default 0,
+  rank int(7) default 0,
+  nfree int(7) default 0,
+  ncard int(7) default 0,
+  nstory int(7) default 0
+  )auto_increment = 10000000;
+
+
+//粉丝关注
+create table focus(
+  fid int(10) unsigned,
+  bfid int(10) unsigned,
+  primary key (fid,bfid),
+  foreign key(fid) references user(uid) on delete cascade,
+  foreign key(bfid) references user(uid) on delete  cascade
+  );
+
+//词卡素材
+create table card(
+  cid int(10) unsigned not null auto_increment,
+  primary key(cid),
+  porder int(7) default 0,
+  pic varchar(50),
+  fid int(10) unsigned,
+  foreign key(fid) references user(uid) on delete set null,
+  main varchar(50)
+  )auto_increment=1;
+
+
+//故事素材
+create table story(
+  sid int(10) unsigned not null auto_increment,
+  primary key(sid),
+  porder int(7) default 0,
+  pic varchar(50),
+  fid int(10) unsigned,
+  foreign key(fid) references user(uid) on delete set null,
+  title varchar(50),
+  main text
+  )auto_increment=1;
+
+
+//文章
+create table article(
+  aid int(10) unsigned not null auto_increment,
+  primary key(aid),
+  class enum("card","story","free"),
+  uid int(10) unsigned,
+  foreign key(uid) references user(uid) on delete cascade,
+  cid int(10) unsigned,
+  sid int(10) unsigned,
+  type enum("1","2","3","4"),
+  label varchar(50),
+  title varchar(50),
+  main text,
+  pic text,
+  nlove int(7) default 0,
+  ncomment int(7) default 0,
+  nvisit int(7) default 0,
+  wtime datetime
+  )auto_increment=1;
+
+//评论
+create table comment(
+  cid int(10) unsigned not null auto_increment,
+  primary key(cid),
+  aid int(10) unsigned,
+  foreign key(aid) references article(aid) on delete cascade,
+  uid int(10) unsigned,
+  foreign key(uid) references user(uid) on delete set null,
+  touid int(10) unsigned,
+  foreign key(touid) references user(uid) on delete set null,
+  main text,
+  wtime datetime
+  )auto_increment=1;
+
+//收藏
+create table collection(
+  uid int(10) unsigned,
+  foreign key(uid) references user(uid) on delete cascade,
+  aid int(10) unsigned,
+  foreign key(aid) references article(aid) on delete cascade
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
