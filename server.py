@@ -8,10 +8,12 @@ import tornado.options
 from routes.router import application
 
 from tornado.options import define, options
-define("port", default=8000, help="run on the given port", type=int)
+
+Port = 8000
+define("port", default=Port, help="run on the given port", type=int)
 
 def main(address):
-    application.listen(8000, address)
+    application.listen(Port, address)
     tornado.ioloop.IOLoop.instance().start()
 
 if __name__ == "__main__":
