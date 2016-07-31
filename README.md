@@ -2,6 +2,8 @@
 A thought share website.
 岁阅，一个思想分享网站。
 
+代码已经部署到阿里云平台上，ip地址为[http://115.28.245.246/](http://115.28.245.246/)。可点击查看效果。
+
 ## 关于部署
 
 ### 环境要求
@@ -43,6 +45,12 @@ A thought share website.
     ```
     
 - 打开获取的代码包，解压后可以获得一个叫suiyue_database_new.txt 的文件，依次输入其中的MySQL建表语句即可建立数据库
+- 另外你也可以看到一个叫suiyue.sql的文件，该文件是数据库导出文件，你也可以直接将该文件导入到你的数据库中。终端进入该文件目录，键入一下命令即可
+    
+    ```
+    mysql -u root -p suiyue < suiyue.sql
+    ```
+  注意这里的 root 修改为自己对应的mysql账号。
 
 ### 运行代码
 - 开启MySQL数据库
