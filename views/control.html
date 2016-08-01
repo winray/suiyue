@@ -24,9 +24,9 @@
 				<tr>
 					<td>
 					{% if one.porder == 0 %}
-					未发布
+					未设置发布时期
 					{% else %}
-					第{{ one.porder }}期
+					设置第{{ one.porder }}期
 					{% end if %}</td>
   					<td>{{ one.main }}</td>
   					<td class='pic-setting'><img src="{{ static_url('pic/card/'+one.pic) }}" alt="词卡图片"></td>
@@ -36,10 +36,9 @@
 						<button id="submit-button" type="submit">设置图片</button>
 					</form></td>
   					<td class='order-setting'>
-  					{% if one.porder>6 or one.porder==0 %}
+  					{% if one.porder>order or one.porder==0 %}
   					<form action="/cardorder" method="post">
   						<select name='porder'>
-  							<option value ="0">0</option>
   							<option value ="{{ order+1 }}">{{ order+1 }}</option>
   							<option value="{{ order+2 }}">{{ order+2 }}</option>
   							<option value="{{ order+3 }}">{{ order+3 }}</option>
@@ -75,9 +74,9 @@
   				{% for one in stories %}
 				<tr>
 					<td>{% if one.porder == 0 %}
-					未发布
+					未设置发布日期
 					{% else %}
-					第{{ one.porder }}期
+					设置第{{ one.porder }}期
 					{% end if %}</td>
   					<td>{{ one.title }}</td>
   					<td>{{ one.main }}</td>
@@ -91,7 +90,6 @@
   					{% if one.porder>order or one.porder==0 %}
   					<form action="/storyorder" method="post">
   						<select name='porder'>
-  							<option value ="0">0</option>
   							<option value ="{{ order+1 }}">{{ order+1 }}</option>
   							<option value="{{ order+2 }}">{{ order+2 }}</option>
   							<option value="{{ order+3 }}">{{ order+3 }}</option>
